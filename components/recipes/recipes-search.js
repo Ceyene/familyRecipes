@@ -13,6 +13,7 @@ function RecipesSearch(props) {
 		const selectedMealType = mealTypeInputRef.current.value;
 		const selectedDifficulty = difficultyInputRef.current.value;
 
+		//navigating programmatically to the filtered recipes page
 		props.onSearch(selectedMealType, selectedDifficulty);
 	}
 
@@ -22,6 +23,7 @@ function RecipesSearch(props) {
 				<div className={classes.control}>
 					<label htmlFor="mealType">Meal Type</label>
 					<select id="mealType" ref={mealTypeInputRef}>
+						<option value="all">All types</option>
 						<option value="breakfast">Breakfast</option>
 						<option value="lunch">Lunch</option>
 						<option value="dinner">Dinner</option>
@@ -31,6 +33,7 @@ function RecipesSearch(props) {
 				<div className={classes.control}>
 					<label htmlFor="difficulty">Difficulty</label>
 					<select id="difficulty" ref={difficultyInputRef}>
+						<option value="all">All levels</option>
 						<option value="beginner">Beginner</option>
 						<option value="intermediate">Intermediate</option>
 						<option value="advanced">Advanced</option>

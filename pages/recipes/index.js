@@ -9,8 +9,8 @@ function AllRecipesPage() {
 	const router = useRouter();
 	const recipes = getAllRecipes();
 
-	function findRecipesHandler(year, month) {
-		const fullPath = `/recipes/${year}/${month}`;
+	function findRecipesHandler(mealType, difficulty) {
+		const fullPath = `/recipes/${mealType}/${difficulty}`;
 
 		router.push(fullPath);
 	}

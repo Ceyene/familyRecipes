@@ -42,12 +42,13 @@ export function getAllRecipes() {
 	return DUMMY_RECIPES;
 }
 
-export function getFilteredRecipes(type, difficulty) {
+export function getFilteredRecipes(mealType, difficulty) {
+	if (mealType === 'all' && difficulty === 'all') {
+		return DUMMY_RECIPES;
+	}
 
 	let filteredRecipes = DUMMY_RECIPES.filter((recipe) => {
-		return (
-			
-		);
+		return recipe.mealType === mealType || recipe.difficulty === difficulty;
 	});
 
 	return filteredRecipes;

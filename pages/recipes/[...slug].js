@@ -19,12 +19,19 @@ function FilteredRecipesPage() {
 	const mealType = filterData[0];
 	const difficulty = filterData[1];
 
-	const validMealType = ['breakfast', 'lunch', 'dinner', 'snack'].includes(
-		mealType
-	);
-	const validDifficulty = ['beginner', 'intermediate', 'advanced'].includes(
-		difficulty
-	);
+	const validMealType = [
+		'all',
+		'breakfast',
+		'lunch',
+		'dinner',
+		'snack',
+	].includes(mealType);
+	const validDifficulty = [
+		'all',
+		'beginner',
+		'intermediate',
+		'advanced',
+	].includes(difficulty);
 
 	if (!validMealType || !validDifficulty) {
 		return (
@@ -39,10 +46,7 @@ function FilteredRecipesPage() {
 		);
 	}
 
-	const filteredRecipes = getFilteredRecipes({
-		mealType: mealType,
-		difficulty: difficulty,
-	});
+	const filteredRecipes = getFilteredRecipes(mealType, difficulty);
 
 	if (!filteredRecipes || filteredRecipes.length === 0) {
 		return (
@@ -59,7 +63,7 @@ function FilteredRecipesPage() {
 
 	return (
 		<Fragment>
-			<ResultsTitle date={(difficulty, mealType)} />
+			<ResultsTitle difficulty={difficulty} mealType={mealType} />
 			<RecipeList items={filteredRecipes} />
 		</Fragment>
 	);
