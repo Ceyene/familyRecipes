@@ -19,7 +19,7 @@ const DUMMY_RECIPES = [
 		ingredients: ['lechuga', 'tomate'],
 		preparation: '...',
 		image: 'images/salad.jpg',
-		isFeatured: true,
+		isFeatured: false,
 	},
 	{
 		id: 'r3',
@@ -30,6 +30,29 @@ const DUMMY_RECIPES = [
 		ingredients: ['harina', 'sésamo'],
 		preparation: '...',
 		image: 'images/chalitas.jpg',
+		isFeatured: true,
+	},
+	{
+		id: 'r4',
+		title: 'Guiso de arroz',
+		mealType: 'dinner',
+		difficulty: 'difficult',
+		servings: 2,
+		ingredients: ['arroz integral', 'verduras', 'curry'],
+		preparation:
+			'En una olla poner a dorar la cebolla picada, la zanahoria, y el pimiento rojo. Una vez dorada, agregar la carne molida hasta que cambie su color. Agregamos puré de tomate y condimentamos, cocinamos por 15 minutos. Agregamos la papa previamente hervida con el arroz (ir agregando agua hervida para que no se seque la preparación). También se puede agregar cruda antes de agregar el arroz. Cuando el arroz esté listo, servir',
+		image: 'images/guiso.jpg',
+		isFeatured: true,
+	},
+	{
+		id: 'r5',
+		title: 'Chocolate Bar',
+		mealType: 'dessert',
+		difficulty: 'beginner',
+		servings: 8,
+		ingredients: ['chocolate bar'],
+		preparation: 'Go to the market and buy a chocolate bar.',
+		image: 'images/chocolate.jpg',
 		isFeatured: true,
 	},
 ];
