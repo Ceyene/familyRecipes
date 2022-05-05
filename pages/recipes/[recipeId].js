@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-import { getRecipeById, getAllRecipes } from '../../helpers/api-util';
+import { getRecipeById, getFeaturedRecipes } from '../../helpers/api-util';
 import RecipeSummary from '../../components/recipe-detail/recipe-summary';
 import RecipeFeatures from '../../components/recipe-detail/recipe-features';
 import RecipeContent from '../../components/recipe-detail/recipe-content';
@@ -11,9 +11,9 @@ function RecipeDetailPage(props) {
 
 	if (!recipe) {
 		return (
-			<ErrorAlert>
-				<p>No recipe found!</p>
-			</ErrorAlert>
+			<div className="center">
+				<p>Loading...</p>
+			</div>
 		);
 	}
 
@@ -43,12 +43,12 @@ function RecipeDetailPage(props) {
 
 //pre-generating dynamic paths
 export async function getStaticPaths() {
-	const recipes = await getAllRecipes();
+	const recipes = await getFeaturedRecipes();
 	const paths = recipes.map((recipe) => ({ params: { recipeId: recipe.id } }));
 
 	return {
 		paths: paths,
-		fallback: false,
+		fallback: true,
 	};
 }
 
@@ -62,6 +62,7 @@ export async function getStaticProps(context) {
 		props: {
 			selectedRecipe: recipe,
 		},
+		revalidate: 30, //every 30 seconds it regenerates request
 	};
 }
 

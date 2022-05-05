@@ -17,6 +17,7 @@ export async function getStaticProps() {
 		props: {
 			recipes: featuredRecipes,
 		},
+		revalidate: 1800, //every half hour it regenerates request
 	};
 }
 
