@@ -28,7 +28,21 @@ ul {
 	padding: 0;
 }
 
+.centeredTitle {
+	margin: 1.5rem auto;
+	text-align: center;
+}
+
 .center {
 	margin: auto;
+	text-align: center;
+}
+
+.sectionSubtitle {
+	font-weight: 400;
+}
+
+.footer {
+	padding: 1rem;
 	text-align: center;
 }

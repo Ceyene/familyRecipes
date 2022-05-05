@@ -4,6 +4,7 @@ import RecipeList from '../components/recipes/recipe-list';
 function HomePage(props) {
 	return (
 		<div>
+			<h1 className="centeredTitle">Our Favorites:</h1>
 			<RecipeList items={props.recipes} />
 		</div>
 	);

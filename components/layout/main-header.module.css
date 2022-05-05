@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Send+Flowers&display=swap');
 
 .header {
 	width: 100%;
@@ -7,7 +7,7 @@
 	align-items: baseline;
 	padding: 1rem 5vw;
 	height: 6rem;
-	background-color: rgba(187, 157, 44, 0.25);
+	background-color: rgba(107, 76, 190, 0.7);
 	border-top: 3px solid rgba(0, 0, 0, 0.4);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 	border-left: 3px solid rgba(0, 0, 0, 0.4);
@@ -19,7 +19,7 @@
 .logo {
 	font-size: 1.5rem;
 	color: rgb(65, 64, 64);
-	font-family: 'Abril Fatface', cursive;
+	font-family: 'Send Flowers', cursive;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -29,13 +29,13 @@
 
 .logo a {
 	text-decoration: none;
-	color: rgb(70, 69, 69);
+	color: rgb(253, 249, 249);
 	text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .navigation a {
 	text-decoration: none;
-	color: rgb(116, 95, 19);
+	color: rgb(255, 255, 255);
 	font-size: 1rem;
 }
 

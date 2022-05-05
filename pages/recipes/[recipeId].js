@@ -28,13 +28,13 @@ function RecipeDetailPage(props) {
 				imageAlt={recipe.title}
 			/>
 			<RecipeContent>
-				<h3>Ingredients:</h3>
+				<h3 className="sectionSubtitle">Ingredients:</h3>
 				<ul>
 					{recipe.ingredients.map((ingredient) => (
 						<li key={ingredient}>{ingredient}</li>
 					))}
 				</ul>
-				<h3>Preparation:</h3>
+				<h3 className="sectionSubtitle">Preparation:</h3>
 				<p>{recipe.preparation}</p>
 			</RecipeContent>
 		</Fragment>

@@ -5,6 +5,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-top-left-radius: 150px;
+	border-bottom-left-radius: 150px;
 }
 
 .summary h1 {
