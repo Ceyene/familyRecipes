@@ -32,7 +32,13 @@ function RecipeDetailPage() {
 				imageAlt={recipe.title}
 			/>
 			<RecipeContent>
-				<p>{recipe.ingredients}</p>
+				<h3>Ingredients:</h3>
+				<ul>
+					{recipe.ingredients.map((ingredient) => (
+						<li>{ingredient}</li>
+					))}
+				</ul>
+				<h3>Preparation:</h3>
 				<p>{recipe.preparation}</p>
 			</RecipeContent>
 		</Fragment>
