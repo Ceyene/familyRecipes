@@ -31,7 +31,7 @@ function RecipeDetailPage(props) {
 				<h3>Ingredients:</h3>
 				<ul>
 					{recipe.ingredients.map((ingredient) => (
-						<li>{ingredient}</li>
+						<li key={ingredient}>{ingredient}</li>
 					))}
 				</ul>
 				<h3>Preparation:</h3>
