@@ -1,43 +1,17 @@
 import { Fragment } from 'react';
-import { useRouter } from 'next/router';
-
-import { getFilteredRecipes } from '../../dummy-data';
+import { getFilteredRecipes } from '../../helpers/api-util';
 import RecipeList from '../../components/recipes/recipe-list';
 import ResultsTitle from '../../components/recipes/results-title';
 import Button from '../../components/ui/button';
 import ErrorAlert from '../../components/ui/error-alert';
 
-function FilteredRecipesPage() {
-	const router = useRouter();
-
-	const filterData = router.query.slug;
-
-	if (!filterData) {
-		return <p className="center">Loading...</p>;
-	}
-
-	const mealType = filterData[0];
-	const difficulty = filterData[1];
-
-	const validMealType = [
-		'all',
-		'breakfast',
-		'lunch',
-		'dinner',
-		'snack',
-	].includes(mealType);
-	const validDifficulty = [
-		'all',
-		'beginner',
-		'intermediate',
-		'advanced',
-	].includes(difficulty);
-
-	if (!validMealType || !validDifficulty) {
+function FilteredRecipesPage(props) {
+	//if there is an error in the filter params, returning an error message
+	if (props.hasError) {
 		return (
 			<Fragment>
 				<ErrorAlert>
-					<p>Invalid filter. Please adjust your values!</p>
+					<p></p>
 				</ErrorAlert>
 				<div className="center">
 					<Button link="/recipes">Show All Recipes</Button>
@@ -46,7 +20,10 @@ function FilteredRecipesPage() {
 		);
 	}
 
-	const filteredRecipes = getFilteredRecipes(mealType, difficulty);
+	const filteredRecipes = props.recipes;
+	const mealType = props.mealType;
+	const difficulty = props.difficulty;
+	console.log(filteredRecipes);
 
 	if (!filteredRecipes || filteredRecipes.length === 0) {
 		return (
@@ -67,6 +44,49 @@ function FilteredRecipesPage() {
 			<RecipeList items={filteredRecipes} />
 		</Fragment>
 	);
+}
+
+//server-side rendering
+export async function getServerSideProps(context) {
+	const { params } = context;
+
+	const filterData = params.slug;
+
+	const mealType = filterData[0];
+	const difficulty = filterData[1];
+
+	const validMealType = [
+		'all',
+		'breakfast',
+		'lunch',
+		'dinner',
+		'snack',
+		'dessert',
+	].includes(mealType);
+	const validDifficulty = [
+		'all',
+		'beginner',
+		'intermediate',
+		'advanced',
+	].includes(difficulty);
+
+	if (!validMealType || !validDifficulty) {
+		return {
+			props: {
+				hasError: true,
+			},
+		};
+	}
+
+	const filteredRecipes = await getFilteredRecipes(mealType, difficulty);
+
+	return {
+		props: {
+			recipes: filteredRecipes,
+			mealType: mealType,
+			difficulty: difficulty,
+		},
+	};
 }
 
 export default FilteredRecipesPage;

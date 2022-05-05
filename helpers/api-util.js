@@ -29,3 +29,21 @@ export async function getRecipeById(id) {
 
 	return allRecipes.find((recipe) => recipe.id === id);
 }
+//filtering recipes
+export async function getFilteredRecipes(mealType, difficulty) {
+	//getting all recipes
+	const allRecipes = await getAllRecipes();
+	//validating if filter is in all in both categories before filtering
+	if (mealType === 'all' && difficulty === 'all') {
+		return allRecipes;
+	}
+	//filtering recipes
+	let filteredRecipes = allRecipes.filter((recipe) => {
+		if (mealType !== 'all' && difficulty !== 'all') {
+			return recipe.mealType === mealType && recipe.difficulty === difficulty;
+		}
+		return recipe.mealType === mealType || recipe.difficulty === difficulty;
+	});
+
+	return filteredRecipes;
+}
