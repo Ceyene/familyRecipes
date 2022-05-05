@@ -28,6 +28,7 @@ function RecipesSearch(props) {
 						<option value="lunch">Lunch</option>
 						<option value="dinner">Dinner</option>
 						<option value="snack">Snack</option>
+						<option value="dessert">Dessert</option>
 					</select>
 				</div>
 				<div className={classes.control}>
