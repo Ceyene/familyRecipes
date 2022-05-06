@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import Head from 'next/head';
 
 import { getRecipeById, getFeaturedRecipes } from '../../helpers/api-util';
 import RecipeSummary from '../../components/recipe-detail/recipe-summary';
@@ -19,6 +20,13 @@ function RecipeDetailPage(props) {
 
 	return (
 		<Fragment>
+			<Head>
+				<title>{recipe.title}</title>
+				<meta
+					name="description"
+					content={`See this awesome recipe: ${recipe.title}`}
+				/>
+			</Head>
 			<RecipeSummary title={recipe.title} />
 			<RecipeFeatures
 				mealType={recipe.mealType}

@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import { getAllRecipes } from '../../helpers/api-util';
 import RecipeList from '../../components/recipes/recipe-list';
@@ -17,6 +18,10 @@ function AllRecipesPage(props) {
 
 	return (
 		<Fragment>
+			<Head>
+				<title>All Recipes</title>
+				<meta name="description" content="See all our available recipes" />
+			</Head>
 			<RecipesSearch onSearch={findRecipesHandler} />
 			<RecipeList items={recipes} />
 		</Fragment>

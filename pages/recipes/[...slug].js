@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import Head from 'next/head';
 import { getFilteredRecipes } from '../../helpers/api-util';
 import RecipeList from '../../components/recipes/recipe-list';
 import ResultsTitle from '../../components/recipes/results-title';
@@ -6,12 +7,23 @@ import Button from '../../components/ui/button';
 import ErrorAlert from '../../components/ui/error-alert';
 
 function FilteredRecipesPage(props) {
+	//head
+	const pageHeadData = (
+		<Head>
+			<title>Filtered Recipes</title>
+			<meta
+				name="description"
+				content="All recipes for the selected meal type and difficulty"
+			/>
+		</Head>
+	);
 	//if there is an error in the filter params, returning an error message
 	if (props.hasError) {
 		return (
 			<Fragment>
+				{pageHeadData}
 				<ErrorAlert>
-					<p></p>
+					<p>Invalid filter. Please adjust your values!</p>
 				</ErrorAlert>
 				<div className="center">
 					<Button link="/recipes">Show All Recipes</Button>
@@ -28,6 +40,7 @@ function FilteredRecipesPage(props) {
 	if (!filteredRecipes || filteredRecipes.length === 0) {
 		return (
 			<Fragment>
+				{pageHeadData}
 				<ErrorAlert>
 					<p>No recipes found for the chosen filter!</p>
 				</ErrorAlert>
@@ -40,6 +53,7 @@ function FilteredRecipesPage(props) {
 
 	return (
 		<Fragment>
+			{pageHeadData}
 			<ResultsTitle difficulty={difficulty} mealType={mealType} />
 			<RecipeList items={filteredRecipes} />
 		</Fragment>
