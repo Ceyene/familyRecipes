@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Button from '../ui/button';
 import DifficultyIcon from '../icons/difficulty-icon';
 import MealTypeIcon from '../icons/meal-type-icon';
@@ -12,7 +13,7 @@ function RecipeItem(props) {
 
 	return (
 		<li className={classes.item}>
-			<img src={'/' + image} alt={title} />
+			<Image src={'/' + image} alt={title} width={250} height={170} />
 			<div className={classes.content}>
 				<div className={classes.summary}>
 					<h2>{title}</h2>
