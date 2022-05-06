@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { getFeaturedRecipes } from '../helpers/api-util';
 import RecipeList from '../components/recipes/recipe-list';
+import NewsletterRegistration from '../components/input/newsletter-registration';
 
 function HomePage(props) {
 	return (
@@ -12,6 +13,7 @@ function HomePage(props) {
 					content="A list of the traditional and not so traditional recipes I know"
 				/>
 			</Head>
+			<NewsletterRegistration />
 			<h1 className="centeredTitle">Our Favorites:</h1>
 			<RecipeList items={props.recipes} />
 		</div>

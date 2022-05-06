@@ -5,7 +5,7 @@ import { getRecipeById, getFeaturedRecipes } from '../../helpers/api-util';
 import RecipeSummary from '../../components/recipe-detail/recipe-summary';
 import RecipeFeatures from '../../components/recipe-detail/recipe-features';
 import RecipeContent from '../../components/recipe-detail/recipe-content';
-import ErrorAlert from '../../components/ui/error-alert';
+import Comments from '../../components/input/comments';
 
 function RecipeDetailPage(props) {
 	const recipe = props.selectedRecipe;
@@ -45,6 +45,7 @@ function RecipeDetailPage(props) {
 				<h3 className="sectionSubtitle">Preparation:</h3>
 				<p>{recipe.preparation}</p>
 			</RecipeContent>
+			<Comments recipeId={recipe.id} />
 		</Fragment>
 	);
 }
