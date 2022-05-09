@@ -17,7 +17,7 @@ export async function getAllDocuments(client, collection, sort, filter = {}) {
 export async function connectDatabase() {
 	//creating mongo client
 	const client = await MongoClient.connect(
-		`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.q2qeb.mongodb.net/recipes?retryWrites=true&w=majority`
+		`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER}.q2qeb.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`
 	);
 	return client;
 }
