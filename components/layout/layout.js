@@ -1,8 +1,13 @@
-import { Fragment } from 'react';
-
+import { Fragment, useContext } from 'react';
+import NotificationContext from '../../store/notification-context';
+import Notification from '../ui/notification';
 import MainHeader from './main-header';
 
 function Layout(props) {
+	const notificationCtx = useContext(NotificationContext);
+
+	const activeNotification = notificationCtx.notification;
+
 	return (
 		<Fragment>
 			<MainHeader />
@@ -10,6 +15,13 @@ function Layout(props) {
 			<footer className="footer">
 				Family Recipes © 2022 - Made with ♥ by Cynthia Romero
 			</footer>
+			{activeNotification && (
+				<Notification
+					title={activeNotification.title}
+					message={activeNotification.message}
+					status={activeNotification.status}
+				/>
+			)}
 		</Fragment>
 	);
 }
