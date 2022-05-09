@@ -1,5 +1,4 @@
 //dependencies
-import { MongoClient } from 'mongodb';
 import { connectDatabase, insertDocument } from '../../helpers/db-util';
 
 //MONGODB
@@ -15,8 +14,9 @@ async function handler(req, res) {
 			return;
 		}
 		//USING MONGODB
+		let client;
 		try {
-			const client = await connectDatabase();
+			client = await connectDatabase();
 		} catch (error) {
 			res.status(500).json({ message: 'Connecting to the database failed!' });
 			return;
@@ -26,7 +26,9 @@ async function handler(req, res) {
 			//closing db connection
 			client.close();
 		} catch (error) {
-			res.status(500).json({ message: 'Inserting data failed!' });
+			res
+				.status(500)
+				.json({ message: error.message || 'Inserting data failed!' });
 			return;
 		}
 
