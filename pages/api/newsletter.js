@@ -16,11 +16,11 @@ async function handler(req, res) {
 			//USING MONGODB
 			//creating mongo client
 			const client = await MongoClient.connect(
-				`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.q2qeb.mongodb.net/newsletter?retryWrites=true&w=majority`
+				`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.q2qeb.mongodb.net/recipes?retryWrites=true&w=majority`
 			);
 			//creating db and collection
 			const db = client.db();
-			const recipesCollection = db.collection('emails');
+			const recipesCollection = db.collection('newsletter');
 			//creating a document
 			const result = await recipesCollection.insertOne({ email: userEmail });
 			console.log(result);
