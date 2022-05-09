@@ -55,6 +55,7 @@ function Comments(props) {
 					message: 'Your comment was successfully sent',
 					status: 'success',
 				});
+				toggleCommentsHandler();
 			} else {
 				throw new Error(data.message || 'Something went wrong...');
 			}
